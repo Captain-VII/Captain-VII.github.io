@@ -150,6 +150,15 @@ function pickAsset(assets) {
       || usable[0] || null;
 }
 
+// Retire le nom du projet quand la description GitHub commence par lui (« Débarras — voir… » → « Voir… »).
+function cleanDesc(desc, title) {
+  var t = title.toLowerCase();
+  if (desc.toLowerCase().indexOf(t) !== 0) return desc;
+  var rest = desc.slice(t.length).replace(/^\s*[—–:\-|]\s*/, '');
+  if (rest === desc.slice(t.length)) return desc; // pas de séparateur : on garde tel quel
+  return rest.charAt(0).toUpperCase() + rest.slice(1);
+}
+
 function frDate(iso) {
   return new Date(iso).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
@@ -205,14 +214,16 @@ function card(p) {
   if (LANG_COLORS[p.lang]) dot.style.background = LANG_COLORS[p.lang];
   var tags = el('ul', { 'class': 'tags' }, p.topics.slice(0, 5).map(function (t) { return el('li', { text: t }); }));
   var dlLabel = p.file ? 'Télécharger' : 'Télécharger le .zip';
+  var title = TITLES[p.name] || p.name;
+  var desc = cleanDesc(p.desc, title);
   return el('article', {}, [
     el('div', { 'class': 'top' }, [
       el('span', { 'class': 'lang' }, [dot, p.lang]),
       el('span', { 'class': 'ver' + (p.version ? '' : ' none'), text: p.version || 'pas de version' })
     ]),
     el('div', {}, [
-      el('h3', { text: TITLES[p.name] || p.name }),
-      p.desc ? el('p', { 'class': 'desc', text: p.desc }) : null
+      el('h3', { text: title }),
+      desc ? el('p', { 'class': 'desc', text: desc }) : null
     ]),
     p.topics.length ? tags : null,
     el('div', { 'class': 'actions' }, [
