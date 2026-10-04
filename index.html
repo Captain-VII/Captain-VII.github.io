@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23E58BFF'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='24' font-weight='700' text-anchor='middle' fill='%23000'%3EVII%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/webp" href="avatar.webp">
+<meta property="og:image" content="https://captain-vii.github.io/avatar.webp">
 <style>
 :root{
   --bg:#000000; --card:#0D0D10; --line:#1E1E24; --line2:#2E2E36; --line3:#3A3A44;
@@ -27,7 +28,7 @@ header{border-bottom:1px solid var(--line)}
 .bar{padding-top:20px;padding-bottom:20px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
 .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--text)}
 .brand:hover{color:var(--text)}
-.logo{width:40px;height:40px;border-radius:10px;background:var(--accent);color:#000;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:500;font-size:15px}
+.logo{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);display:block}
 .brand b{font-weight:800;font-size:20px;letter-spacing:-.01em}
 nav{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:14px}
 nav a{text-decoration:none;padding:12px 14px;color:var(--muted)}
@@ -78,7 +79,7 @@ svg{flex:none}
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#top"><span class="logo">VII</span><b>Captain-VII</b></a>
+    <a class="brand" href="#top"><img class="logo" src="avatar.webp" alt="" width="44" height="44"><b>Captain-VII</b></a>
     <nav aria-label="Navigation principale">
       <a href="#projets">projets</a>
       <a class="gh" href="https://github.com/Captain-VII">github →</a>
