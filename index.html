@@ -34,32 +34,34 @@ nav{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:14
 nav a{text-decoration:none;padding:12px 14px;color:var(--muted)}
 nav a.gh{color:#000;background:var(--text);padding:12px 16px;border-radius:8px;font-weight:500}
 nav a.gh:hover{background:#fff;color:#000}
-.hero{padding-top:96px;padding-bottom:64px;display:flex;flex-direction:column;gap:24px}
+.hero{padding-top:56px;padding-bottom:40px;display:flex;flex-direction:column;gap:16px}
 .kicker{margin:0;font-family:var(--mono);font-size:14px;color:var(--accent)}
-h1{margin:0;font-size:clamp(44px,7vw,88px);line-height:1;font-weight:800;letter-spacing:-.03em;max-width:900px}
-.lead{margin:0;max-width:640px;font-size:20px;color:var(--muted)}
+h1{margin:0;font-size:clamp(32px,4vw,48px);line-height:1.1;font-weight:800;letter-spacing:-.02em;max-width:760px}
+.lead{margin:0;max-width:640px;font-size:17px;color:var(--muted)}
 .lead strong{color:var(--accent);font-weight:600}
-.stats{display:flex;flex-wrap:wrap;gap:32px;margin-top:16px;font-family:var(--mono);font-size:14px;color:var(--faint)}
+.stats{display:flex;flex-wrap:wrap;gap:32px;margin-top:4px;font-family:var(--mono);font-size:14px;color:var(--faint)}
 .stats div{display:flex;flex-direction:column}
-.stats span{font-family:var(--display);font-size:36px;font-weight:600;color:var(--text)}
+.stats span{font-family:var(--display);font-size:26px;font-weight:600;color:var(--text)}
 #projets{padding-bottom:96px;display:flex;flex-direction:column;gap:28px}
 .head{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:32px}
 h2{margin:0;font-size:32px;font-weight:800;letter-spacing:-.02em}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips button{min-height:44px;padding:0 16px;border-radius:999px;cursor:pointer;font-family:var(--mono);font-size:14px;background:transparent;color:var(--muted);border:1px solid var(--line3)}
 .chips button[aria-pressed="true"]{background:var(--text);color:#000;border-color:var(--text)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,480px),1fr));gap:20px}
-article{background:var(--card);border:1px solid #222228;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px}
+article{background:var(--card);border:1px solid #222228;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px}
 .top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .lang{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:13px;color:var(--muted)}
 .dot{width:10px;height:10px;border-radius:50%;background:var(--faint)}
-.ver{font-family:var(--mono);font-size:13px;color:#000;background:var(--accent);padding:3px 10px;border-radius:999px;font-weight:500}
+.badges{display:flex;gap:6px;align-items:center}
+.badge{font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:999px}
+.ver{font-family:var(--mono);font-size:12px;color:#000;background:var(--accent);padding:3px 10px;border-radius:999px;font-weight:500}
 .ver.none{background:transparent;color:var(--faint);border:1px solid var(--line3)}
-h3{margin:0;font-size:30px;font-weight:800;letter-spacing:-.02em}
-.desc{margin:6px 0 0;color:var(--muted)}
+h3{margin:0;font-size:24px;font-weight:800;letter-spacing:-.02em}
+.desc{margin:6px 0 0;color:var(--muted);font-size:16px}
 .tags{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
 .tags li{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line2);padding:3px 9px;border-radius:6px}
-.actions{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:6px}
+.actions{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:4px}
 .btn{display:inline-flex;gap:10px;align-items:center;min-height:44px;padding:0 18px;border-radius:10px;text-decoration:none;font-size:16px}
 .btn.dl{background:var(--accent);color:#000;font-weight:600}
 .btn.dl:hover{background:var(--accent-hover);color:#000}
@@ -67,6 +69,9 @@ h3{margin:0;font-size:30px;font-weight:800;letter-spacing:-.02em}
 .btn.src:hover{border-color:var(--muted);color:var(--text)}
 .all{font-family:var(--mono);font-size:13px;color:var(--faint);padding:12px 4px}
 .meta{margin:0;font-family:var(--mono);font-size:12px;color:var(--faint);border-top:1px dashed var(--line2);padding-top:14px;overflow-wrap:anywhere}
+.warn{display:flex;gap:14px;align-items:flex-start;background:#121216;border:1px solid #2A2A31;border-radius:12px;padding:14px 18px;font-size:15px;color:var(--muted)}
+.warn p{margin:0}.warn strong{color:var(--text);font-weight:600}
+.chips .lbl{font-family:var(--mono);font-size:13px;color:var(--faint);align-self:center;margin-right:4px}
 .status{color:var(--muted);font-family:var(--mono);font-size:14px;padding:32px 0}
 footer{border-top:1px solid var(--line)}
 footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;color:var(--faint);font-size:15px}
@@ -102,8 +107,9 @@ svg{flex:none}
   <section id="projets" class="wrap" aria-labelledby="projets-titre">
     <div class="head">
       <h2 id="projets-titre">Projets</h2>
-      <div class="chips" id="chips" role="group" aria-label="Filtrer par langage"></div>
+      <div class="chips" id="chips" role="group" aria-label="Trier les projets"></div>
     </div>
+    <div class="warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E58BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:2px"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg><p><strong>Windows bloque l’installateur ?</strong> C’est normal : les apps ne sont pas signées (un certificat coûte cher). Cliquez sur <strong>Informations complémentaires</strong> puis <strong>Exécuter quand même</strong>. Le code est public sur GitHub.</p></div>
     <div class="grid" id="grid" aria-live="polite"></div>
     <p class="status" id="status">Chargement des projets depuis GitHub…</p>
   </section>
@@ -122,16 +128,20 @@ var USER = 'Captain-VII';
 // Dépôts à ne pas afficher (ce site lui-même, par exemple).
 var HIDDEN = ['captain-vii.github.io'];
 // Noms d'affichage optionnels ; sinon le nom du dépôt est utilisé.
-var TITLES = { 'debarras': 'Débarras', 'livechat': 'LiveChat', 'alfred': 'Alfred', 'poe2-waystone-analyzer': 'Waystone Analyzer' };
+var TITLES = { 'debarras': 'Débarras', 'livechat': 'LiveChat', 'alfred': 'Alfred', 'poe2-waystone-analyzer': 'Waystone Analyzer', 'corral': 'Corral' };
+// Windows requis par projet (sinon « Windows »).
+var OS = { 'alfred': 'Windows 11', 'poe2-waystone-analyzer': 'Windows 10/11 + WebView2', 'corral': 'Windows 10/11' };
+// Projets marqués « Nouveau » (sinon auto : dépôt créé il y a moins de 30 jours).
+var NEW = ['alfred'];
 // Description de secours quand le dépôt n'en a pas sur GitHub.
-var DESCRIPTIONS = { 'poe2-waystone-analyzer': 'Outil d’analyse des waystones pour Path of Exile 2.' };
+var DESCRIPTIONS = { 'poe2-waystone-analyzer': 'Overlay pour Path of Exile 2 : survolez une Waystone (touche Inser) pour savoir si elle vaut le coup, quelle tablette y mettre et quel Atlas Master choisir, sans quitter le jeu.' };
 var LANG_COLORS = { Python: '#5B8DEF', JavaScript: '#F7DF6B', TypeScript: '#3178C6', 'C#': '#68B04D', Rust: '#DEA584', Go: '#00ADD8', HTML: '#E34C26' };
-var CACHE_KEY = 'cvii-projets-v1', CACHE_MS = 10 * 60 * 1000;
+var CACHE_KEY = 'cvii-projets-v2', CACHE_MS = 10 * 60 * 1000;
 
 var ICON_DL = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>';
 var ICON_CODE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/></svg>';
 
-var projects = [], filter = 'Tous';
+var projects = [], sort = 'Récents', DAY = 86400000;
 
 function el(tag, attrs, children) {
   var n = document.createElement(tag);
@@ -182,7 +192,8 @@ function load() {
             return {
               name: r.name, url: r.html_url, lang: r.language || 'Autre',
               desc: r.description || DESCRIPTIONS[r.name] || '',
-              topics: r.topics || [], pushed: r.pushed_at,
+              topics: r.topics || [], pushed: rel ? rel.published_at : r.pushed_at, created: r.created_at,
+              size: asset ? asset.size : 0,
               version: rel ? rel.tag_name : null,
               releases: r.html_url + '/releases',
               file: asset ? asset.name : null,
@@ -198,16 +209,27 @@ function load() {
 }
 
 function renderChips() {
-  var langs = ['Tous'];
-  projects.forEach(function (p) { if (langs.indexOf(p.lang) < 0) langs.push(p.lang); });
   var box = document.getElementById('chips');
   box.textContent = '';
-  if (langs.length < 3) return; // inutile de filtrer une seule catégorie
-  langs.forEach(function (l) {
-    var b = el('button', { type: 'button', 'aria-pressed': String(l === filter), text: l });
-    b.addEventListener('click', function () { filter = l; renderChips(); renderGrid(); });
+  box.appendChild(el('span', { 'class': 'lbl', text: 'trier :' }));
+  ['Récents', 'A–Z'].forEach(function (l) {
+    var b = el('button', { type: 'button', 'aria-pressed': String(l === sort), text: l });
+    b.addEventListener('click', function () { sort = l; renderChips(); renderGrid(); });
     box.appendChild(b);
   });
+}
+
+function fmtSize(b) {
+  if (!b) return '';
+  var mo = b / 1048576;
+  return (mo < 10 ? mo.toFixed(1).replace('.', ',') : Math.round(mo)) + ' Mo';
+}
+
+function badge(p) {
+  var now = Date.now();
+  if (NEW.indexOf(p.name) >= 0 || now - new Date(p.created) < 30 * DAY) return 'Nouveau';
+  if (p.version && now - new Date(p.pushed) < 30 * DAY) return 'Mis à jour';
+  return '';
 }
 
 function card(p) {
@@ -220,7 +242,10 @@ function card(p) {
   return el('article', {}, [
     el('div', { 'class': 'top' }, [
       el('span', { 'class': 'lang' }, [dot, p.lang]),
-      el('span', { 'class': 'ver' + (p.version ? '' : ' none'), text: p.version || 'pas de version' })
+      el('span', { 'class': 'badges' }, [
+        badge(p) ? el('span', { 'class': 'badge', text: badge(p) }) : null,
+        el('span', { 'class': 'ver' + (p.version ? '' : ' none'), text: p.version || 'pas de version' })
+      ])
     ]),
     el('div', {}, [
       el('h3', { text: title }),
@@ -232,23 +257,24 @@ function card(p) {
       el('a', { 'class': 'btn src', href: p.url, html: ICON_CODE + '<span>Code source</span>' }),
       p.version ? el('a', { 'class': 'all', href: p.releases, text: 'toutes les versions' }) : null
     ]),
-    el('p', { 'class': 'meta', text: (p.file || 'code source') + ' · mis à jour le ' + frDate(p.pushed) })
+    el('p', { 'class': 'meta', text: [fmtSize(p.size), OS[p.name] || 'Windows', 'mis à jour le ' + frDate(p.pushed)].filter(Boolean).join(' · ') })
   ]);
 }
 
 function renderGrid() {
   var grid = document.getElementById('grid');
   grid.textContent = '';
-  projects
-    .filter(function (p) { return filter === 'Tous' || p.lang === filter; })
+  projects.slice()
+    .sort(function (a, b) {
+      if (sort === 'A–Z') return (TITLES[a.name] || a.name).localeCompare(TITLES[b.name] || b.name, 'fr');
+      return (!!b.version - !!a.version) || (new Date(b.pushed) - new Date(a.pushed));
+    })
     .forEach(function (p) { grid.appendChild(card(p)); });
 }
 
 load().then(function (data) {
   // Les projets avec une version publiée d'abord, puis les plus récents.
-  projects = data.sort(function (a, b) {
-    return (!!b.version - !!a.version) || (new Date(b.pushed) - new Date(a.pushed));
-  });
+  projects = data;
   document.getElementById('count').textContent = projects.length;
   document.getElementById('status').hidden = true;
   renderChips();
