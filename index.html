@@ -156,6 +156,9 @@ function el(tag, attrs, children) {
 
 function pickAsset(assets) {
   var usable = assets.filter(function (a) { return !/\.(blockmap|sig|sha256|yml|json)$/i.test(a.name); });
+  // Les PC Windows sont presque tous x64 : l'ARM64 ne sert que s'il est seul.
+  var x64 = usable.filter(function (a) { return !/arm64|aarch64/i.test(a.name); });
+  if (x64.length) usable = x64;
   return usable.find(function (a) { return /setup.*\.exe$|\.exe$/i.test(a.name); })
       || usable.find(function (a) { return /\.(msi|zip)$/i.test(a.name); })
       || usable[0] || null;
