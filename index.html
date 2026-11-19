@@ -52,7 +52,7 @@ article{background:var(--card);border:1px solid #222228;border-radius:14px;paddi
 .lang{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:0.8125rem;color:var(--muted)}
 .dot{width:10px;height:10px;border-radius:50%;background:var(--faint)}
 .badges{display:flex;gap:6px;align-items:center}
-.badge{font-family:var(--mono);font-size:0.75rem;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:999px}
+.badge{font-family:var(--mono);font-size:0.75rem;color:var(--text);border:1px solid var(--line3);padding:2px 8px;border-radius:999px}
 .ver{font-family:var(--mono);font-size:0.75rem;color:#000;background:var(--accent);padding:3px 10px;border-radius:999px;font-weight:500}
 .ver.none{background:transparent;color:var(--faint);border:1px solid var(--line3)}
 h3{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
@@ -64,6 +64,8 @@ h3{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
 .btn.dl{background:var(--accent);color:#000;font-weight:600}
 .btn.src{border:1px solid var(--line3);color:var(--text)}
 .all{font-family:var(--mono);font-size:0.8125rem;color:var(--faint);padding:12px 4px}
+.sk{min-height:330px}
+::view-transition-group(*){animation-duration:.35s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
 .meta{margin:0;font-family:var(--mono);font-size:0.75rem;color:var(--faint);border-top:1px dashed var(--line2);padding-top:14px;overflow-wrap:anywhere}
 .warn{display:flex;gap:14px;align-items:flex-start;background:#121216;border:1px solid #2A2A31;border-radius:12px;padding:14px 18px;font-size:0.9375rem;color:var(--muted)}
 .warn p{margin:0}.warn strong{color:var(--text);font-weight:600}
@@ -104,8 +106,6 @@ svg{flex:none}
     <p class="lead">Je ne suis pas développeur : tous ces projets sont <strong>vibe codés</strong>, construits en dialoguant avec une IA. Des outils faits pour moi, qui peuvent servir à d’autres. Gratuits, open source, pour Windows.</p>
     <div class="stats">
       <div><span id="count">…</span>projets publiés</div>
-      <div><span>Windows</span>plateforme</div>
-      <div><span>Open source</span>sur GitHub</div>
     </div>
   </section>
 
@@ -115,7 +115,7 @@ svg{flex:none}
       <div class="chips" id="chips" role="group" aria-label="Trier les projets"></div>
     </div>
     <div class="warn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E58BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:2px"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg><p><strong>Windows bloque l’installateur ?</strong> C’est normal : les apps ne sont pas signées (un certificat coûte cher). Cliquez sur <strong>Informations complémentaires</strong> puis <strong>Exécuter quand même</strong>. Le code est public sur GitHub.</p></div>
-    <div class="grid" id="grid"></div>
+    <div class="grid" id="grid"><article class="sk" aria-hidden="true"></article><article class="sk" aria-hidden="true"></article><article class="sk" aria-hidden="true"></article><article class="sk" aria-hidden="true"></article></div>
     <p class="status" id="status" role="status">Chargement des projets depuis GitHub…</p>
   </section>
 </main>
@@ -222,7 +222,12 @@ function renderChips() {
   box.appendChild(el('span', { 'class': 'lbl', text: 'trier :' }));
   ['Récents', 'A–Z'].forEach(function (l) {
     var b = el('button', { type: 'button', 'aria-pressed': String(l === sort), text: l });
-    b.addEventListener('click', function () { sort = l; renderChips(); renderGrid(); });
+    b.addEventListener('click', function () {
+      sort = l; renderChips();
+      // Les cartes glissent vers leur nouvelle place (fondu simple si animations réduites).
+      if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(renderGrid);
+      else renderGrid();
+    });
     box.appendChild(b);
   });
 }
@@ -247,7 +252,15 @@ function card(p) {
   var dlLabel = p.file ? 'Télécharger' : 'Télécharger le .zip';
   var title = TITLES[p.name] || p.name;
   var desc = cleanDesc(p.desc, title);
-  return el('article', {}, [
+  var dl = el('a', { 'class': 'btn dl', href: p.download, html: ICON_DL + '<span>' + dlLabel + '</span>' });
+  dl.addEventListener('click', function () {
+    var s = dl.lastChild;
+    if (s.textContent !== dlLabel) return;
+    dl.style.minWidth = dl.offsetWidth + 'px'; // pas de saut de largeur
+    s.textContent = 'Lancé ✓';
+    setTimeout(function () { s.textContent = dlLabel; }, 2000);
+  });
+  return el('article', { style: 'view-transition-name:p-' + p.name.replace(/[^\w-]/g, '_') }, [
     el('div', { 'class': 'top' }, [
       el('span', { 'class': 'lang' }, [dot, p.lang]),
       el('span', { 'class': 'badges' }, [
@@ -261,7 +274,7 @@ function card(p) {
     ]),
     p.topics.length ? tags : null,
     el('div', { 'class': 'actions' }, [
-      el('a', { 'class': 'btn dl', href: p.download, html: ICON_DL + '<span>' + dlLabel + '</span>' }),
+      dl,
       el('a', { 'class': 'btn src', href: p.url, html: ICON_CODE + '<span>Code source</span>' }),
       p.version ? el('a', { 'class': 'all', href: p.releases, text: 'toutes les versions' }) : null
     ]),
@@ -288,6 +301,7 @@ load().then(function (data) {
   renderChips();
   renderGrid();
 }).catch(function () {
+  document.getElementById('grid').textContent = '';
   document.getElementById('count').textContent = '—';
   var s = document.getElementById('status');
   s.textContent = '';
